@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html 	xmlns:th="http://www.thymeleaf.org/"
+		xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>ホーム画面</title>
+		<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<!--		<link rel="stylesheet" href="/css/home.css">-->
+	</head>
+	<body>		
+		
+		
+		
+		<h2>ログイン画面</h2>
+		
+		<!-- エラー表示 -->
+		<div th:if="${param.error}">
+			<p style="color: red;">usernameまたはpasswordが違います</p>
+		</div>
+		
+		<!--ログアウト表示 -->
+		<div th:if="${param.logout}">
+			<p style="color: blue">ログアウトしました</p>
+		</div>
+		
+		
+		<form th:action="@{/authentication}" method="post" th:object="${user}">
+			<div><!-- ユーザー名 -->
+				<label for="mail">mail</label>
+				<input type="text" name="mail" th:field="*{mail}">
+			</div>
+			<div><!-- パスワード -->
+				<label for="password">password</label>
+				<input type="password" name="password" th:field="*{password}">
+			</div>
+			<div>
+				<input type="submit" value="login" >
+			</div>
+		</form>
+		
+	</body>
+</html>

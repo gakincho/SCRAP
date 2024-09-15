@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html 	xmlns:th="http://www.thymeleaf.org/"
+		xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>ホーム画面</title>
+		<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<!--		<link rel="stylesheet" href="/css/home.css">-->
+	</head>
+	<body>
+		
+		<form th:action="@{/logout}" method="post">
+        	<input type="submit" name="logout" value="ログアウト"/>
+		</form>
+		
+		<h1>H3LL0!</h1>
+		<h1 th:text="${user.nickname}"></h1>
+		
+		
+	</body>
+</html>
