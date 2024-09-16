@@ -10,10 +10,24 @@ import com.scrap.entity.User;
 @Controller
 public class UserController {
 	
-	@GetMapping("/")
-	public String getIndex(@AuthenticationPrincipal User user, Model model) {
+	@GetMapping("/user")
+	public String getUserMenu(@AuthenticationPrincipal User user, Model model) {
 		model.addAttribute("user", user);
-		return "index";
+		return "user";
 	}
+	
+	@GetMapping("/user/rgst")
+	public String getUserRgst(@AuthenticationPrincipal User user, Model model) {
+		model.addAttribute("user", user);
+		return "user_rgst";
+	}
+	
+	@GetMapping("/user/dlt")
+	public String getUserDlt(@AuthenticationPrincipal User user, Model model) {
+		model.addAttribute("user", user);
+		return "user_dlt";
+	}
+	
+	
 	
 }

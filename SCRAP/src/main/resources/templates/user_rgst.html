@@ -4,7 +4,7 @@
 
 	<head>
 		<meta charset="UTF-8">
-		<title>ホーム画面</title>
+		<title>ユーザー画面</title>
 		<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <!--		<link rel="stylesheet" href="/css/home.css">-->
 	</head>
@@ -15,17 +15,21 @@
 		</form>
 		
 		<div sec:authorize="hasRole('ROLE_ADMIN')">
-			<form th:action="@{/user}" method="get">
-				<button type="submit">ユーザーページへ</button>
+			<form th:action="@{/user/dlt}" method="get">
+				ユーザーを削除：<button type="submit">ユーザー情報削除</button>
 			</form>
 		</div>
+		<form th:action="@{/user}" method="get">
+			ユーザーメニューに戻る：<button type="submit">ユーザー情報追加</button>
+		</form>
 		
 		<div sec:authorize="hasRole('ROLE_USER')">
 			USERロールを持っている場合のみ表示される
 		</div>
 		
-		<h1>H3LL0!<span th:text="${user.nickname}"></span></h1>
-		<h1>your authority is <span th:text="${user.getAuthorities()[0]}"></span></h1>
+		<h1>H3LL0!</h1>
+		<h1 th:text="${user.nickname}"></h1>
+		<h1 th:text="${user.getAuthorities()}"></h1>
 		
 
 		
