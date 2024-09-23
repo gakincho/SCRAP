@@ -45,7 +45,8 @@ public class SecurityConfig {
         		.permitAll()
 		).authorizeHttpRequests(authz -> authz
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                .requestMatchers("/login").permitAll()
+                .requestMatchers("/css/**", "/js/**", "/img/**").permitAll()
+                .requestMatchers("/login", "/user/rgst").permitAll()
                 .requestMatchers("/general").hasRole("GENERAL")
                 .requestMatchers("/admin").hasRole("ADMIN")
                 .anyRequest().authenticated()

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html 	xmlns:th="http://www.thymeleaf.org/"
+		xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+		xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>共通部分</title>
+		<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+		<link rel="stylesheet" href="/css/common.css">
+		<script type="text/javascript" src="/js/common.js" charset="utf-8"></script>
+	</head>
+	<body>
+		<!--ヘッダー-->
+		<header id="header">
+			<div class="logo_container">
+				<a th:href="@{/}"><img src="/img/logo_scrap.png" id="logo"></a>
+			</div>
+			<div class="header_title">
+				<a th:href="@{/}"><h1>SCRAP</h1></a>
+			</div>
+			<div class="nav_container">
+				<span class="nav_toggle">
+					<i></i>
+					<i></i>
+					<i></i>
+				</span>
+				<nav class="nav">
+					<ul class="nav_menu_ul">
+						<li><a th:href="@{/user}">Profile</a></li>
+						<li><a th:href="@{/user}">Works</a></li>
+						<li><a th:href="@{/user}">Setting</a></li>
+						<li>
+							<form th:action="@{/logout}" method="post">
+	        					<input type="submit" name="logout" value="ログアウト"/>
+							</form>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+		
+		<!--本体部分-->
+		<div layout:fragment="content">				
+		</div>
+		
+		<!--フッター-->
+		<footer id="footer">
+			<div class="footer_copy">&COPY;GAKINCHO</div>
+		</footer>
+		
+	</body>
+</html>

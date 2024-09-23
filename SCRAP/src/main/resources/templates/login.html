@@ -1,43 +1,58 @@
 <!DOCTYPE html>
 <html 	xmlns:th="http://www.thymeleaf.org/"
-		xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+		xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+		xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+		layout:decorate ="~{/common}"
+>
 
 	<head>
 		<meta charset="UTF-8">
 		<title>ホーム画面</title>
 		<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<!--		<link rel="stylesheet" href="/css/home.css">-->
+		<link rel="stylesheet" href="/css/login.css">
 	</head>
 	<body>		
 		
 		
-		
-		<h2>ログイン画面</h2>
-		
-		<!-- エラー表示 -->
-		<div th:if="${param.error}">
-			<p style="color: red;">usernameまたはpasswordが違います</p>
-		</div>
-		
-		<!--ログアウト表示 -->
-		<div th:if="${param.logout}">
-			<p style="color: blue">ログアウトしました</p>
-		</div>
-		
-		
-		<form th:action="@{/authentication}" method="post" th:object="${user}">
-			<div><!-- ユーザー名 -->
-				<label for="mail">mail</label>
-				<input type="text" name="mail" th:field="*{mail}">
-			</div>
-			<div><!-- パスワード -->
-				<label for="password">password</label>
-				<input type="password" name="password" th:field="*{password}">
-			</div>
+		<!--本体部分-->
+		<div layout:fragment="content">	
+
 			<div>
-				<input type="submit" value="login" >
+				<h1 class="page_title">LOGIN</h1>
+				<div class="form_container">
+				
+					<!-- エラー表示 -->
+					<div th:if="${param.error}">
+						<p style="color: tomato;">Username or Password is Incorrect</p>
+					</div>
+					
+					<!--ログアウト表示 -->
+					<div th:if="${param.logout}">
+						<p style="color: cadetblue">Logged Out</p>
+					</div>
+					
+					
+					<form th:action="@{/authentication}" method="post" th:object="${user}" class="form">
+						<div class="input_container">
+							<div class="input"><!-- ユーザー名 -->
+								<label for="mail">mail</label>
+								<input type="text" name="mail" th:field="*{mail}">
+							</div>
+							<div class="input"><!-- パスワード -->
+								<label for="password">password</label>
+								<input type="password" name="password" th:field="*{password}">
+							</div>
+							<div class="input">
+								<input type="submit" value="login" >
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="regist_container">
+					<a th:href="@{/user/rgst}">SignUp</a>
+				</div>
 			</div>
-		</form>
+		</div>
 		
 	</body>
 </html>

@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+.page_title {
+	display: flex;
+	justify-content: start;
+	font-size: 20px;
+	padding-top: 40px;
+	padding-left: 30px;
+	width: 80%;
+}
+
+.form_container {
+	width: 40%;
+	padding: 10px 30px;
+}
+
+.form_container label {
+	display: block;
+	width: 20px;
+}
+
+.input_container {
+	padding: 10px 5px;
+	background-color: cornsilk;
+}
+
+.input {
+	padding-bottom: 10px;
+}
+
+.regist_container {
+	width: 40%;
+	padding: 10px 30px;
+}
+
+.regist_container a{
+	text-decoration: none;
+	padding: 0 10px;
+/*	color: darkorchid;*/
+	background-color: floralwhite;
+
+}

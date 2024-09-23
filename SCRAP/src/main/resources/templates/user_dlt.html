@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html 	xmlns:th="http://www.thymeleaf.org/"
+		xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
 		xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
 
 	<head>
@@ -16,12 +17,12 @@
 		
 		<div sec:authorize="hasRole('ROLE_ADMIN')">
 			<form th:action="@{/user/rgst}" method="get">
-				ユーザーを追加：<button type="submit">ユーザー情報追加</button>
+				ユーザー追加：<button type="submit">ユーザー追加</button>
 			</form>
 		</div>
 		
 		<form th:action="@{/user}" method="get">
-			ユーザーメニューに戻る：<button type="submit">ユーザー情報追加</button>
+			ユーザープロフィールに戻る：<button type="submit">プロフィール</button>
 		</form>
 		
 		<div sec:authorize="hasRole('ROLE_USER')">
