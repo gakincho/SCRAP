@@ -26,15 +26,21 @@
 					<i></i>
 				</span>
 				<nav class="nav">
-					<ul class="nav_menu_ul">
+			        <!-- ログイン済みの場合のメニュー -->
+					<ul class="nav_menu_ul" sec:authorize="isAuthenticated()">
 						<li><a th:href="@{/user}">Profile</a></li>
-						<li><a th:href="@{/user}">Works</a></li>
+						<li><a th:href="@{/works}">Works</a></li>
 						<li><a th:href="@{/user}">Setting</a></li>
 						<li>
 							<form th:action="@{/logout}" method="post">
 	        					<input type="submit" name="logout" value="ログアウト"/>
 							</form>
 						</li>
+					</ul>
+			        <!-- ログインしていない場合のメニュー -->
+					<ul class="nav_menu_ul" sec:authorize="!isAuthenticated()">
+						<li><a th:href="@{/user/rgst}">New Regist</a></li>
+						<li><a th:href="@{/works}">Works</a></li>
 					</ul>
 				</nav>
 			</div>

@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+.book_container {
+	background-color: lavender;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+}
+
+.book_inf {
+	height: 190px;
+	width: 150px;
+	background-color: azure;
+	margin: 10px;
+	border-radius: 10%;
+}
+
+.book_inf .work {
+	text-decoration: none;
+	color: black;
+	text-align: center;
+	align-items: center;
+}
+
+.sec_img img {
+	height: 150px;
+	width: 100px;
+	object-fit: cover;
+	border-radius: 3%;
+	border: 1px black solid;
+	
+}
+
+.sec_name h3{
+	margin: 0;
+}

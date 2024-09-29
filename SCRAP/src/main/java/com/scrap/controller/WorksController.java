@@ -4,33 +4,27 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.scrap.entity.Book;
 import com.scrap.entity.User;
 import com.scrap.serviceImpl.BookService;
 
-@Controller
-public class CommonController {
-	
+public class WorksController {
+
 	@Autowired
 	BookService bookSev;
 	
-	//ログイン画面
-	@GetMapping("/login")
-	public String getLogin(@ModelAttribute User user) {
-		return "login";
-	}
-	
-	//ホーム画面
-	@GetMapping("/")
-	public String getIndex(@AuthenticationPrincipal User user,Book book, Model model) {
+	//作品一覧画面
+	@GetMapping("/works")
+	public String getWorks(@AuthenticationPrincipal User user,Book book, Model model) {
 		model.addAttribute("user", user);
 		List<Book> books = bookSev.findAllBooks();
 		model.addAttribute("books", books);
-		return "index";
+		return "works";
 	}
+	
+	//書籍情報登録画面
+	
 }

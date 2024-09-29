@@ -15,11 +15,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "book", schema = "scrap")
+@Table(name = "movie", schema = "scrap")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Book {
+public class Movie {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,7 +33,7 @@ public class Book {
     private Genre genre; 
     
     @Column(name = "author")
-    private String author;
+    private String seriess;
 
     @Column(name = "created")
     private Timestamp created;
@@ -42,7 +42,7 @@ public class Book {
     private Timestamp modified;
 
     @Column(name = "delete_flag")
-    private Boolean deleteFlag = false;
+    private Boolean delete_Flag = false;
     
     @Column(name = "img_path")
     private String imgPath;
