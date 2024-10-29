@@ -1,12 +1,12 @@
 package com.scrap.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -21,7 +21,12 @@ import lombok.RequiredArgsConstructor;
 public class SecurityConfig {
 	
 	//DI対象がいればDI化して使用
-	private final UserDetailsServiceImpl userDetailsServiceImpl;
+	@Autowired
+	UserDetailsServiceImpl userDetailsServiceImpl;
+	
+	@Autowired
+    PasswordEncoder passwordEncoder;
+
 	
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -46,7 +51,7 @@ public class SecurityConfig {
 		).authorizeHttpRequests(authz -> authz
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                 .requestMatchers("/css/**", "/js/**", "/img/**").permitAll()
-                .requestMatchers("/login", "/user/rgst", "/works").permitAll()
+                .requestMatchers("/login", "/account/rgst", "/works").permitAll()
                 .requestMatchers("/general").hasRole("GENERAL")
                 .requestMatchers("/admin").hasRole("ADMIN")
                 .anyRequest().authenticated()
@@ -54,9 +59,5 @@ public class SecurityConfig {
         return http.build();
     }
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-	
+
 }

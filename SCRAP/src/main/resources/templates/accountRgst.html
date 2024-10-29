@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html 	xmlns:th="http://www.thymeleaf.org/"
+		xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+		xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+		layout:decorate ="~{/common}"
+>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>AccountNewRegist</title>
+		<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+		<link rel="stylesheet" href="/css/accountRgst.css">
+	</head>
+	<body>
+		
+		<!--本体部分-->
+		<div layout:fragment="content">	
+		
+			<h3 class="title">Regist New Account</h3>
+			
+			<form th:action="@{/account/rgst}" method="post" th:object="${rgstUser}">
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+
+				<div class="account_mail">
+					<label for="mail">MailAddress</label>
+					<input type="email" th:field="*{mail}">
+				</div>
+				<div class="account_password">
+					<label for="password">Password</label>
+					<input type="password" th:field="*{password}">
+				</div>
+				<div class="account_password">
+					<label for="confirm_password">Confirm Password</label>
+					<input type="password" th:field="*{confirmPassword}">
+				</div>
+				<div class="account_name">
+					<label for="name">Name</label>
+					<input type="text" th:field="*{name}">
+				</div>
+				<div class="account_nickName">
+					<label for="nickname">NickName</label>
+					<input type="text" th:field="*{nickname}">
+				</div>
+				<div class="account_authority">
+					<label for="authority">Authority</label>
+					<input type="checkbox" th:field="*{authority}">
+				</div>
+				<div class="submit">
+					<button type="submit">Submit</button>
+				</div>
+			</form>
+			
+			
+		</div>
+		
+	</body>
+</html>

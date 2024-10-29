@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+a {
+	text-decoration: none;
+	color: darkgray;
+}
+
+.authentication_inf {
+	background-color: mediumpurple;
+	margin-bottom: 30px;
+}
+
+.authentication_inf p {
+	margin: 0;
+	color: azure;
+}
+
+.admin_menu {
+	background-color: gold;
+	margin-bottom: 30px;
+}

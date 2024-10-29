@@ -28,9 +28,9 @@
 				<nav class="nav">
 			        <!-- ログイン済みの場合のメニュー -->
 					<ul class="nav_menu_ul" sec:authorize="isAuthenticated()">
-						<li><a th:href="@{/user}">Profile</a></li>
+						<li><a th:href="@{/profile}">Profile</a></li>
 						<li><a th:href="@{/works}">Works</a></li>
-						<li><a th:href="@{/user}">Setting</a></li>
+						<li><a th:href="@{/profile}">Setting</a></li>
 						<li>
 							<form th:action="@{/logout}" method="post">
 	        					<input type="submit" name="logout" value="ログアウト"/>
@@ -39,8 +39,9 @@
 					</ul>
 			        <!-- ログインしていない場合のメニュー -->
 					<ul class="nav_menu_ul" sec:authorize="!isAuthenticated()">
-						<li><a th:href="@{/user/rgst}">New Regist</a></li>
+						<li><a th:href="@{/account/rgst}">New Account</a></li>
 						<li><a th:href="@{/works}">Works</a></li>
+						<li><a th:href="@{/work/rgst}">Regist New Book</a></li>
 					</ul>
 				</nav>
 			</div>

@@ -15,15 +15,19 @@
 		
 		<!--本体部分-->
 		<div layout:fragment="content">	
-						
-			<div class="book_container">
-				<section class="book_inf" th:each="book : ${books}" th:if="${!book.deleteFlag}">
+			
+			<div class="workMenu">
+				<a th:href="@{/work/rgst}">作品登録</a>
+			</div>
+			
+			<div class="work_container">
+				<section class="work_inf" th:each="work : ${works}" th:if="${!work.deleteFlag}">
 					<a th:href="@{/}">
 						<div class="sec_img">
-							<img th:src="@{/img/img/{imgPath}(imgPath=${book.imgPath})}" alt="Book_Image">
+							<img th:src="@{/img/img/{imgPath}(imgPath=${work.imgPath})}" alt="work_Image">
 						</div>
 						<div class="sec_name">
-							<h3 th:text="${book.name}"></h3>
+							<h3 th:text="${work.name}"></h3>
 						</div>
 					</a>
 				</section>

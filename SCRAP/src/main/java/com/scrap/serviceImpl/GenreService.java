@@ -5,18 +5,18 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.scrap.entity.Book;
-import com.scrap.repository.BookRepository;
+import com.scrap.entity.Genre;
+import com.scrap.repository.GenreRepository;
 
 @Service
-public class BookService {
+public class GenreService {
 	
 	@Autowired
-	BookRepository bookRepos;
+	GenreRepository genreRepos;
 	
 	//全件取得
-	public List<Book> findAllBooks(){
-		return bookRepos.findAll();
+	public List<Genre> findGenres(){
+		return genreRepos.findByDeleteFlagFalse();
 	}
 	
 }

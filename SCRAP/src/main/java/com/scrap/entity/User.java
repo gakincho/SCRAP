@@ -1,6 +1,7 @@
 package com.scrap.entity;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -14,6 +15,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -40,6 +42,9 @@ public class User implements UserDetails {
 
     @Column(name = "password")
     private String password;
+    
+    @Transient
+    private String confirmPassword;
 
     @Column(name = "authority")
     private Boolean authority;
@@ -48,7 +53,7 @@ public class User implements UserDetails {
     private Timestamp created;
 
     @Column(name = "modified")
-    private Timestamp modified;
+    private Timestamp modified = Timestamp.valueOf(LocalDateTime.now());
 
     @Column(name = "delete_flag")
     private Boolean delete_Flag = false;

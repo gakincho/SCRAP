@@ -1,13 +1,13 @@
 @charset "UTF-8";
 
-.book_container {
+.work_container {
 	background-color: lavender;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: flex-start;
 }
 
-.book_inf {
+.work_inf {
 	height: 190px;
 	width: 150px;
 	background-color: azure;
@@ -15,7 +15,7 @@
 	border-radius: 10%;
 }
 
-.book_inf a {
+.work_inf a {
 	text-decoration: none;
 	color: black;
 	text-align: center;

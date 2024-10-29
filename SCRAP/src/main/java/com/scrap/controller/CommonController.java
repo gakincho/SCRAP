@@ -9,15 +9,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
-import com.scrap.entity.Book;
 import com.scrap.entity.User;
-import com.scrap.serviceImpl.BookService;
+import com.scrap.entity.Work;
+import com.scrap.serviceImpl.WorkService;
 
 @Controller
 public class CommonController {
 	
 	@Autowired
-	BookService bookSev;
+	WorkService bookSev;
 	
 	//ログイン画面
 	@GetMapping("/login")
@@ -27,10 +27,10 @@ public class CommonController {
 	
 	//ホーム画面
 	@GetMapping("/")
-	public String getIndex(@AuthenticationPrincipal User user,Book book, Model model) {
+	public String getIndex(@AuthenticationPrincipal User user, Work work, Model model) {
 		model.addAttribute("user", user);
-		List<Book> books = bookSev.findAllBooks();
-		model.addAttribute("books", books);
+		List<? extends Work> works = bookSev.findAllBooks();
+		model.addAttribute("works", works);
 		return "index";
 	}
 }
