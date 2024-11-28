@@ -30,9 +30,11 @@ public class WorksController {
 	
 	// 作品一覧画面
 	@GetMapping("/works")
-	public String getWorks(@AuthenticationPrincipal User user,Book book, Model model) {
+	public String getWorks(@AuthenticationPrincipal User user, Model model) {
 		model.addAttribute("user", user);
-		List<? extends Work> works = workSev.findAllBooks();
+		List<Book> books = workSev.findAllBooks();
+		List<Movie> movies = workSev.findAllMovies();
+		List<Work> works = workSev.shuffleAllWork(books, movies);
 		model.addAttribute("works", works);
 		return "works";
 	}
@@ -64,7 +66,7 @@ public class WorksController {
 	    BeanUtils.copyProperties(rgstWork, specificWork, "id");
 	    
         if (!specificWork.getFile().isEmpty()) {
-        	fileName = workSev.rgstImg(specificWork.getFile(),specificWork.getName());
+        	fileName = workSev.rgstImg(specificWork);
         	specificWork.setImgPath(fileName);
         }
         workSev.save(specificWork);

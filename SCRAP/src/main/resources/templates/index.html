@@ -21,13 +21,16 @@
 			</div>
 			
 			<div class="work_container">
-				<section class="work_inf" th:each="work : ${works}" th:if="${!work.deleteFlag}">
+				<section class="work_inf" th:each="work : ${works}" th:if="${!work.deleteFlag}"
+				        th:class="${work instanceof T(com.scrap.entity.Book)} ? 'work_inf book' : 'work_inf movie'"> 
 					<a th:href="@{/}">
 						<div class="sec_img">
-							<img th:src="@{/img/img/{imgPath}(imgPath=${work.imgPath})}" alt="work_Image">
+							<img th:src="${work.workType} ? @{'/img/book/{imgPath}'(imgPath=${work.imgPath})} 
+								: @{'/img/movie/{imgPath}'(imgPath=${work.imgPath})}" 
+							alt="work_Image">
 						</div>
 						<div class="sec_name">
-							<h3 th:text="${work.name}"></h3>
+							<h3 th:text="${work.name.length() > 6 ? #strings.substring(work.name, 0, 6) + '...' : work.name}"></h3>
 						</div>
 					</a>
 				</section>
